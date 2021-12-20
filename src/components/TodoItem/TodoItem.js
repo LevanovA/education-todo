@@ -41,24 +41,24 @@ button {
 }
 `
 
-const TodoItem = (props) => {
+const TodoItem = ({todo, onChange, deleteItem, index}) => {
     const classes = [];
 
-    if (props.todo.completed) {
+    if (todo.completed) {
         classes.push('done')
     }
     return (
-        <StyledTodoItem {...props}>
+        <StyledTodoItem>
             <span className={classes.join(' ')}>
                 <input
                     className={'input'}
                     type="checkbox"
-                    onChange={() => props.onChange(props.todo.id)}
+                    onChange={onChange}
                 />
-                <strong className={'number'}>{props.index + 1}</strong>
-                {props.todo.title}
+                <strong className={'number'}>{index + 1}</strong>
+                {todo.title}
             </span>
-            <button onClick={() => props.deleteItem(props.todo.id)}>
+            <button onClick={deleteItem}>
                 <svg className={'close'} width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M12.864 0.86397L12.1569 0.156863L7 5.31372L1.84314 0.156861L1.13603 0.863968L6.29289 6.02083L0.843154 11.4706L1.55026 12.1777L7 6.72794L12.4497 12.1777L13.1568 11.4706L7.70711 6.02083L12.864 0.86397Z"/>
                 </svg>
@@ -66,10 +66,5 @@ const TodoItem = (props) => {
         </StyledTodoItem>
     )
 };
-
-// const mapStateToProps = state => {
-//     console.log(state)
-//     return state
-// }
 
 export default TodoItem;
