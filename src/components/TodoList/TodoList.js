@@ -10,7 +10,6 @@ margin: 0;
 `
 
 const TodoList = (props) => {
-    console.log(222, props)
     return (
         <StyledTodoList {...props}>
             {props.todoAction.map((todo, index) => {

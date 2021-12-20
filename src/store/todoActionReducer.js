@@ -9,8 +9,7 @@ const initialState = [
 export const todoActionReducer = (state = initialState, action) => {
     switch (action.type) {
         case DELETE_TODO:
-            const newState = state.filter(todo => todo.id !== id)
-            return state
+            return state.filter(todo => todo.id !== id)
         case 'REMOVE_TODO':
             return state
         default:
