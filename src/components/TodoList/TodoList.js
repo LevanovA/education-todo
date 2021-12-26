@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import TodoItem from "../TodoItem";
 import {connect} from "react-redux";
-import {TOGGLE_TODO} from "../../store/types";
+import {TOGGLE_TODO, DELETE_TODO} from "../../store/types";
 
 const StyledTodoList= styled.ul`
 list-style: none;
@@ -23,7 +23,10 @@ const TodoList = ({dispatch, todos}) => {
                             type: TOGGLE_TODO,
                             payload: todo.id
                         })}
-                        // deleteItem={}
+                        deleteItem={() => dispatch({
+                            type: DELETE_TODO,
+                            payload: todo.id
+                        })}
                     />
                 )
             })}

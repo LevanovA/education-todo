@@ -1,4 +1,4 @@
-import {DELETE_TODO, TOGGLE_TODO} from "./types";
+import {DELETE_TODO, TOGGLE_TODO, ADD_TODO} from "./types";
 
 const initialState = [
     {id: 1, completed: false, title: 'Купить хлеб'},
@@ -17,8 +17,14 @@ export const todoActionReducer = (state = initialState, action) => {
                 }
                 return item
             })
-        case 'REMOVE_TODO':
-            return state
+        case DELETE_TODO:
+            return state.filter(todo => todo.id !== action.payload)
+        case ADD_TODO:
+            return state.concat([{
+                id: state.length + 1,
+                completed: false,
+                title: action.payload
+            }])
         default:
             return state
     }
