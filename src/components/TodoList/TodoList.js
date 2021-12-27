@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import TodoItem from "../TodoItem";
-import {connect} from "react-redux";
-import {TOGGLE_TODO, DELETE_TODO} from "../../store/types";
 
 const StyledTodoList= styled.ul`
 list-style: none;
@@ -10,7 +8,7 @@ padding: 0;
 margin: 0;
 `
 
-const TodoList = ({dispatch, todos}) => {
+const TodoList = ({ todos, onChange, onDelete }) => {
     return (
         <StyledTodoList>
             {todos.map((todo, index) => {
@@ -19,14 +17,8 @@ const TodoList = ({dispatch, todos}) => {
                         key={todo.id}
                         todo={todo}
                         index={index}
-                        onChange={() => dispatch({
-                            type: TOGGLE_TODO,
-                            payload: todo.id
-                        })}
-                        deleteItem={() => dispatch({
-                            type: DELETE_TODO,
-                            payload: todo.id
-                        })}
+                        onChange={() => onChange(todo.id)}
+                        deleteItem={() => onDelete(todo.id)}
                     />
                 )
             })}
@@ -34,10 +26,4 @@ const TodoList = ({dispatch, todos}) => {
     )
 };
 
-const mapStateToProps = state => {
-    return {
-        todos: state.todoAction
-    }
-}
-
-export default connect(mapStateToProps, null)(TodoList);
+export default TodoList;

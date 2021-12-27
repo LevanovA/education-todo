@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import {connect} from "react-redux";
 import {ADD_TODO} from "../../store/types";
@@ -46,8 +46,8 @@ button {
 }
 `
 
-const AddTodo = ({dispatch}) => {
-    const [value, setValue] = useState('')
+const AddTodo = ({ dispatch }) => {
+    const [value, setValue] = useState('');
 
     return (
         <StyledAddTodo>
@@ -57,7 +57,7 @@ const AddTodo = ({dispatch}) => {
                     type="button"
                     onClick={() => dispatch({
                         type: ADD_TODO,
-                        payload: value
+                        payload: value,
                     })}
                 >
                     Добавить задачу
@@ -69,8 +69,8 @@ const AddTodo = ({dispatch}) => {
 
 const mapStateToProps = state => {
     return {
-        todos: state.todoAction
+        todos: state.todoAction,
     }
-}
+};
 
 export default connect(mapStateToProps, null)(AddTodo);
