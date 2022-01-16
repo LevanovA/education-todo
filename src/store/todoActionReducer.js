@@ -1,3 +1,5 @@
+// import React, { useState, useEffect } from "react";
+// import useFetch from "use-http";
 import {DELETE_TODO, TOGGLE_TODO, ADD_TODO} from "./types";
 
 const initialState = [
@@ -5,6 +7,29 @@ const initialState = [
     {id: 2, completed: false, title: 'Купить масло'},
     {id: 3, completed: false, title: 'Купить молоко'},
 ]
+
+// const initialState = () => {
+//
+//     const { get, response } = useFetch('https://jsonplaceholder.typicode.com');
+//
+//     const [todos, setTodos] = useState([])
+//
+//     useEffect(() => {
+//         loadInitialTodos();
+//         // eslint-disable-next-line react-hooks/exhaustive-deps
+//     }, []);
+//
+//     async function loadInitialTodos() {
+//         try {
+//             const result = await get("/todos");
+//             if (response.ok) setTodos(result);
+//         } catch (e) {
+//             console.log(111, 'error request todos')
+//         }
+//     }
+//
+//     return todos
+// }
 
 export const todoActionReducer = (state = initialState, action) => {
     switch (action.type) {

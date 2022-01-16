@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import {connect} from "react-redux";
-import {ADD_TODO} from "../../store/types";
 
 const StyledAddTodo= styled.div`
+display: flex;
 margin-bottom: 40px;
-
-.form {
-    display: flex;
-}
 
 input {
     padding: 10px;
@@ -46,31 +41,20 @@ button {
 }
 `
 
-const AddTodo = ({ dispatch }) => {
+const AddTodo = ({ addTodo }) => {
     const [value, setValue] = useState('');
 
     return (
         <StyledAddTodo>
-            <form className="form" action="#">
-                <input type="text" value={value} onChange={(evt => setValue(evt.target.value))}/>
-                <button
-                    type="button"
-                    onClick={() => dispatch({
-                        type: ADD_TODO,
-                        payload: value,
-                    })}
-                >
-                    Добавить задачу
-                </button>
-            </form>
+            <input type="text" value={value} onChange={(evt => setValue(evt.target.value))}/>
+            <button
+                type="button"
+                onClick={() => addTodo(value)}
+            >
+                Добавить задачу
+            </button>
         </StyledAddTodo>
     )
 };
 
-const mapStateToProps = state => {
-    return {
-        todos: state.todoAction,
-    }
-};
-
-export default connect(mapStateToProps, null)(AddTodo);
+export default AddTodo;

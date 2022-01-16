@@ -1,4 +1,3 @@
-import React from "react";
 import TodoList from "../../components/TodoList";
 import {DELETE_TODO, TOGGLE_TODO} from "../../store/types";
 import {connect} from "react-redux";

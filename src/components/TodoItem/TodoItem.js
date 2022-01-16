@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import {connect} from "react-redux";
 
 const StyledTodoItem= styled.li`
 color: red;

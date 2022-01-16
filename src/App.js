@@ -1,7 +1,7 @@
 import React from "react";
 import Wrapper from "./components/Wrapper/index";
 import Title from "./components/Title";
-import AddTodo from "./components/AddTodo";
+import AddTodoContainer from "./containers/AddTodoContainer";
 import TodoListContainer from "./containers/TodoListContainer";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <div className="App">
           <Wrapper>
               <Title>Текущие задачи</Title>
-              <AddTodo/>
+              <AddTodoContainer/>
               <TodoListContainer/>
           </Wrapper>
       </div>
