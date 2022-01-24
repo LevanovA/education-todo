@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 
 const StyledAddTodo= styled.div`
@@ -41,18 +41,33 @@ button {
 }
 `
 
-const AddTodo = ({ addTodo }) => {
+const AddTodo = ({ addTodo, requestTodo }) => {
     const [value, setValue] = useState('');
+
+    useEffect(() => {
+        requestTodo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <StyledAddTodo>
             <input type="text" value={value} onChange={(evt => setValue(evt.target.value))}/>
             <button
                 type="button"
-                onClick={() => addTodo(value)}
+                onClick={function () {
+                    addTodo(value)
+                    setValue('')
+                }}
+                // onClick={() => addTodo(value)}
             >
                 Добавить задачу
             </button>
+            {/*<button*/}
+            {/*    type="button"*/}
+            {/*    onClick={() => requestTodo()}*/}
+            {/*>*/}
+            {/*    Получить задачи*/}
+            {/*</button>*/}
         </StyledAddTodo>
     )
 };

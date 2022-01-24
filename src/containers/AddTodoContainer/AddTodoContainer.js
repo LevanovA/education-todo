@@ -1,5 +1,5 @@
 import AddTodo from "../../components/AddTodo";
-import {ADD_TODO} from "../../store/types";
+import {ADD_TODO, REQUEST_TODO} from "../../store/types";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addTodo: (value) => dispatch({
             type: ADD_TODO,
-            payload: value,
+            payload: value
+        }),
+        requestTodo: () => dispatch({
+            type: REQUEST_TODO,
         }),
     }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import thunk from "redux-thunk";
 import {applyMiddleware, compose, createStore} from "redux";
 import {Provider} from "react-redux";
 import createSagaMiddleware from 'redux-saga'
@@ -13,7 +14,7 @@ const saga = createSagaMiddleware();
 
 const store = createStore(rootReducer, compose(
     applyMiddleware(
-        logger, saga
+        logger, saga, thunk
     ),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
